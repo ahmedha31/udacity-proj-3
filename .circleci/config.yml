@@ -75,6 +75,10 @@ jobs:
             echo "Build the frontend app"
             npm run frontend:build
       - run:
+          name: check eb cli ver
+          command: |
+            eb --version
+      - run:
           name: API Build
           command: |
             echo "Build the backend API"
