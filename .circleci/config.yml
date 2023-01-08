@@ -1,10 +1,8 @@
 version: 2.1
 orbs:
-  # orgs contain basc recipes and reproducible actions (install node, aws, etc.)
   node: circleci/node@5.0.2
   eb: circleci/aws-elastic-beanstalk@2.0.1
   aws-cli: circleci/aws-cli@3.1.1
-  # different jobs are calles later in the workflows sections
 jobs:
   build:
     docker:
@@ -44,11 +42,9 @@ jobs:
           name: API Build
           command: |
             echo "TODO: Build the backend API"
-  # deploy step will run only after manual approval
   deploy:
     docker:
       - image: "cimg/base:stable"
-      # more setup needed for aws, node, elastic beanstalk
     steps:
       - node/install:
           node-version: '14.15' 
@@ -56,11 +52,39 @@ jobs:
       - aws-cli/setup
       - checkout
       - run:
-          name: Deploy App
-          # TODO: Install, build, deploy in both apps
+          name: Install Front-End Dependencies
           command: |
-            echo "# TODO: Install, build, deploy in both apps"
-            
+            echo "NODE --version" 
+            echo $(node --version)
+            echo "NPM --version" 
+            echo $(npm --version)
+            npm run frontend:install
+      - run:
+          name: Install API Dependencies
+          command: |
+           echo "Install dependencies in the backend API"
+           npm run api:install
+      - run:
+          name: Front-End Lint
+          command: |
+            echo "Lint the frontend"
+            npm run frontend:lint
+      - run:
+          name: Front-End Build
+          command: |
+            echo "Build the frontend app"
+            npm run frontend:build
+      - run:
+          name: API Build
+          command: |
+            echo "Build the backend API"
+            npm run api:build
+      - run:
+          name: Deploy App
+          command: |
+            echo "deploy in both apps"
+            npm run deploy
+              
 workflows:
   udagram:
     jobs:
