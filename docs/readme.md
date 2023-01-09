@@ -4,7 +4,7 @@
 
 ### CircleCI pipeline
 
-#### CircleCI is a service provided for us to trigger any action happens to our github repo , then it triggers the pipeline to update our code you can see the pipeline process [here](/docs/pipeline.md) and the pipeline image below
+#### CircleCI is a service provided for us to trigger any action happens to our github repo , then it triggers the pipeline to update our code you can see the pipeline process [here](/docs/pipline.md) and the pipeline image below
 
 #### pipeline process
 
