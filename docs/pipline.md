@@ -11,3 +11,13 @@ our pipeline can be summarized in few steps :
    5. build back-end
    6. update back-end code in elastic-beanstalk
    7. update front-end code in its S3 bucket
+
+## pipeline Infrastructure diagram
+
+1. developer push code to github
+2. circleci triggers some actions
+3. circleci update code in elastic-beanstalk
+4. circleci update code in S3 bucket
+
+
+![pipeline diagram](./pipline_1.png)
