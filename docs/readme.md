@@ -2,6 +2,20 @@
 
 ## you can see the final API result [here](http://udagram-api-dev22222222.us-east-1.elasticbeanstalk.com/)
 
+
+## Infrastructure Description
+
+The application have `udagram/udagram-front` for the frontend and `udagram/udagram-api` for the backend
+
+- The frontend is hosted on Amazon S3
+- The Backend is hosted on Amazon Elastic Beanstalk
+- The postgres Database is hosted on Amazon RDS
+
+### Infrastructure Diagram
+
+![screenshots](/docs/screens/udagram.jpg)
+
+
 ### CircleCI pipeline
 
 #### CircleCI is a service provided for us to trigger any action happens to our github repo , then it triggers the pipeline to update our code you can see the pipeline process [here](/docs/pipline.md) and the pipeline image below
